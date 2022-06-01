@@ -10,3 +10,10 @@ for (let i=0; i<size*size; i++){
     tile.classList.add('tile');
     grid.appendChild(tile);
 }
+const tiles = document.querySelectorAll('.tile')
+
+tiles.forEach((tile) => {
+    tile.addEventListener('mouseover', () => {
+        tile.classList.add('filled')
+    })
+})

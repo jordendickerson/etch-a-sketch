@@ -5,5 +5,10 @@
     height: 500px;
 }
 .tile{
-
+    background-color: gray;
+    border: 1px;
+    border-style: solid;
+}
+.filled{
+    background-color: black;
 }
