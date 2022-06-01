@@ -1,5 +1,7 @@
 const grid = document.getElementById('grid');
 const sizeButton = document.getElementById('size-button');
+const rainbowButton = document.getElementById('rainbow-button');
+let isRainbow = false;
 
 let size = 16;
 
@@ -23,7 +25,13 @@ function createGrid(tileSize){
     //color tiles
     tiles.forEach((tile) => {
         tile.addEventListener('mouseover', () => {
-            tile.classList.add('filled');
+            if (!isRainbow){
+                tile.style.backgroundColor = `black`;
+            }else{
+                const randomColor = Math.floor(Math.random()*16777215).toString(16);
+                tile.style.backgroundColor = "#" + randomColor;
+            }
+            
         })
     })
 }
@@ -37,13 +45,13 @@ function clearGrid(){
     })
 }
 
+
 createGrid(size);
 
 sizeButton.addEventListener('click', () => {
     clearGrid();
     let askSize = prompt("What size do you want your grid?", "16");
     size = parseInt(askSize);
-    console.log(size);
     if (isNaN(size)){
         size = 16;
         createGrid(size);
@@ -51,4 +59,8 @@ sizeButton.addEventListener('click', () => {
     }else{
         createGrid(size);
     }
+})
+
+rainbowButton.addEventListener('click', () => {
+    isRainbow = !isRainbow;
 })
